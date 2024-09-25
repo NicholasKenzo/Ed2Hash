@@ -9,23 +9,23 @@
 typedef struct {
 	int id;               // ID C:nico do filme
 	char genero[50];          // Genero do filme
-	char data [50];       // Data de lanC'amento do Filme
-	char temp_vis[20];      // Tempo de visualizaC'C#o do filme
-	char av_user [5];        // AvaliaC'C#o de usuario
+	char data [50];       // Data de lancamento do Filme
+	char temp_vis[20];      // Tempo de visualizacao do filme
+	char av_user [5];        // Avaliacao de usuario
 	char nome[50];        // Nome do filme
 } Filme;
 
 // Estrutura da Tabela Hash
 typedef struct {
-	Filme *tabela[TAMANHO_HASH];  // Array de ponteiros para armazenar transaC'C5es
+	Filme *tabela[TAMANHO_HASH];  // Array de ponteiros para armazenar filmes
 } TabelaHash;
 
-// FunC'C#o Hash: Retorna o C-ndice baseado no ID do File
+// Funcao Hash: Retorna o indice baseado no ID do File
 int funcao_hash(int id) {
-	return id % TAMANHO_HASH;  // Usa mC3dulo para determinar a posiC'C#o na tabela
+	return id % TAMANHO_HASH;  // Usa modulo para determinar a posicao na tabela
 }
 
-// FunC'C#o para inserir um filme na tabela hash
+// Funcao para inserir um filme na tabela hash
 void inserir(TabelaHash *tabela, Filme *filme) {
 	int indice = funcao_hash(filme->id);  // Calcula o C-ndice baseado no ID
 	tabela->tabela[indice] = filme;  // Insere o filme na tabela
@@ -45,13 +45,13 @@ void remover(TabelaHash *tabela, int id) {
 }
 
 
-// FunC'C#o para buscar um filme na tabela hash pelo ID
+// Funcao para buscar um filme na tabela hash pelo ID
 Filme *buscar(TabelaHash *tabela, int id) {
 	int indice = funcao_hash(id);  // Calcula o C-ndice para busca
 	return tabela->tabela[indice];  // Retorna o Filme encontrado
 }
 
-// FunC'C#o para exibir filmes com maior nota
+// Funcao para exibir filmes com maior nota
 void exibirMelhoresFilmes(TabelaHash *tabela) {
 	for (int i = 0; i < TAMANHO_HASH; i++) {
 		if ((tabela->tabela[i] != NULL) && (strcmp(tabela->tabela[i]->av_user, "5.0") == 0)) {
@@ -67,12 +67,12 @@ void exibirMelhoresFilmes(TabelaHash *tabela) {
 	}
 }
 
-// FunC'C#o principal para demonstrar o uso da tabela hash com filmes
+// Funcao principal para demonstrar o uso da tabela hash com filmes
 int main() {
 	// Inicializa a tabela hash
 	TabelaHash tabela = {NULL};
 
-	// CriaC'C#o de alguns filmes
+	// Criacao de alguns filmes
 	Filme filme1 = {101, "romance", "19/09/2024","2:00", "3.5", "Sobre o Mesmo ceu"};
 	Filme filme2 = {102, "açao", "19/09/1998","2:00", "5.0", "Duro de matar"};
 	Filme filme3 = {103, "comedia", "29/11/1974","2:00", "5.0", "Click"};
@@ -112,7 +112,7 @@ int main() {
 	exibirMelhoresFilmes(&tabela);
 	printf("\n");
 	// Remover um filme
-	remover(&tabela, 104);// Removendo o filme com ID 104
+	remover(&tabela, 104); // Removendo o filme com ID 104
 
     // Tentar buscar o filme removido
     t = buscar(&tabela, 104);
