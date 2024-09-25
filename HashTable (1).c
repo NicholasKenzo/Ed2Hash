@@ -27,7 +27,7 @@ int funcao_hash(int id) {
 
 // Funcao para inserir um filme na tabela hash
 void inserir(TabelaHash *tabela, Filme *filme) {
-	int indice = funcao_hash(filme->id);  // Calcula o C-ndice baseado no ID
+	int indice = funcao_hash(filme->id);  // Calcula o indice baseado no ID
 	tabela->tabela[indice] = filme;  // Insere o filme na tabela
 }
 
